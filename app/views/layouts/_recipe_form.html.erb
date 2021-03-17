@@ -6,6 +6,19 @@
   <%= f.label :instruction_set, 'Instructions:' %>
   <%= f.text_area :instruction_set, class: 'form-control', value: @recipe.instruction_set, required: 'true' %>
   <%= f.label :ingredient_set, 'Ingredients:' %>
-  <%= f.text_area :ingredient_set, class: 'form-control', value: @recipe.ingredient_set, required: 'true' %><br>
+  <%= f.text_area :ingredient_set, class: 'form-control', value: @recipe.ingredient_set, required: 'true' %>
+
+
+  <h1>Select a Tag</h1>
+  <% if @tags.any? %>
+    <select name="tag_selection" class="form-control">
+      <option>Select One</option>
+    <% @tags.each do |tag| %>
+      <option value=<%= "#{tag.id}" %>><%= tag.tag %></option>
+    <% end %>
+  <% else %>
+    <p>There are no tags yet.</p>
+  <% end %>
+  <br>
   <%= f.submit class: 'btn btn-primary'%>
 <% end %>

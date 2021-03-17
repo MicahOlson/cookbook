@@ -6,12 +6,15 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @tags = Tag.all
     render :new
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
+      tag = Tag.find(params[:tag_selection].to_i)
+      tag.recipes << @recipe
       flash[:notice] = "Recipe successfully added!"
       redirect_to recipes_path
     else
@@ -21,6 +24,7 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+    @tags = Tag.all
     render :edit
   end
 
@@ -32,6 +36,8 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
+      tag = Tag.find(params[:tag_selection].to_i)
+      tag.recipes << @recipe
       flash[:notice] = "Recipe successfully updated!"
       redirect_to recipes_path
     else
