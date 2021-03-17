@@ -1,0 +1,11 @@
+<%= render "layouts/errors", :object => @recipe %>
+
+<%= form_for @recipe do |f| %>
+  <%= f.label :title, 'Recipe Name:' %>
+  <%= f.text_field :title, class: 'form-control', value: @recipe.title, required: 'true' %>
+  <%= f.label :instruction_set, 'Instructions:' %>
+  <%= f.text_area :instruction_set, class: 'form-control', value: @recipe.instruction_set, required: 'true' %>
+  <%= f.label :ingredient_set, 'Ingredients:' %>
+  <%= f.text_area :ingredient_set, class: 'form-control', value: @recipe.ingredient_set, required: 'true' %><br>
+  <%= f.submit class: 'btn btn-primary'%>
+<% end %>

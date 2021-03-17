@@ -1,5 +1,4 @@
 class TagsController < ApplicationController
-
   def index
     @tags = Tag.all
     render :index
@@ -51,5 +50,4 @@ class TagsController < ApplicationController
     def tag_params
       params.require(:tag).permit(:tag)
     end
-
 end
