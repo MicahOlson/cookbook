@@ -1,8 +1,9 @@
 <h1>Recipes</h1>
 
 <% if @recipes.any? %>
+<% recipes = @recipes.sort_by { |k| k[:title] } %>
   <ul>
-    <% @recipes.each do |recipe| %>
+    <% recipes.each do |recipe| %>
       <li><%= link_to recipe.title, recipe_path(recipe) %></li>
     <% end %>
   </ul>
