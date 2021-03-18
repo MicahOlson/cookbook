@@ -18,9 +18,10 @@
   <h1>Add a Tag</h1>
   <p>Can't find the right tag? Add one on the <%= link_to "Tags", tags_path %> page and come back to add it to your recipe.</p>
   <% if @tags.any? %>
-    <% @tags.each do |tag| %>
+    <% tags = @tags.sort_by { |k| k[:tag] } %>
+    <% tags.each do |tag| %>
       <label class="checkbox-inline">
-        <input type="checkbox" value=<%= "#{tag.id}" %>> <%= tag.tag %>
+        <input name="tag_selections[]" type="checkbox" value=<%= "#{tag.id}" %> <%= @recipe_tags.include?(tag.id) ? "checked" : "" %>><%= tag.tag %>
       </label>
     <% end %><br>
   <% else %>

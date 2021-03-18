@@ -10,10 +10,10 @@
 
 
 <% if @recipe.tags.any? %>
+  <% recipe_tags = @recipe.tags.sort_by { |k| k[:tag] } %>
   <h5>Tags</h5>
-
   <p>| 
-  <% @recipe.tags.each do |tag| %>
+  <% recipe_tags.each do |tag| %>
       <span>
         <%= link_to tag.tag, tag_path(tag) %> |
       </span>

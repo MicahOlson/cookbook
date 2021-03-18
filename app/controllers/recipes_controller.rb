@@ -13,17 +13,18 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @tags = Tag.all
+    @recipe_tags = []
     render :new
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      if params[:tag_selection].to_i != 0
-        tag_array = params[:tag_selection]
+      if params[:tag_selections]
+        tag_array = params[:tag_selections]
         tag_array.each do |check_tags|
-          tag = Tag.find(params[check_tags].to_i)
-          tag.recipes << @recipe
+          tag = Tag.find(check_tags.to_i)
+          @recipe.tags << tag
         end
       end
       flash[:notice] = "Recipe successfully added!"
@@ -37,6 +38,8 @@ class RecipesController < ApplicationController
   def edit
     @recipe = Recipe.find(params[:id])
     @tags = Tag.all
+    @recipe_tags = []
+    @recipe.tags.each { |tag| @recipe_tags.push(tag.id) }
     render :edit
   end
 
@@ -48,12 +51,18 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
-      if params[:tag_selection].to_i != 0
-        tag = Tag.find(params[:tag_selection].to_i)
-        tag.recipes << @recipe
+      @recipe_tags = []
+      @recipe.tags.each { |tag| @recipe_tags.push(tag) }
+      @recipe.tags.delete(@recipe_tags)
+      if params[:tag_selections]
+        tag_array = params[:tag_selections]
+        tag_array.each do |check_tags|
+          tag = Tag.find(check_tags.to_i)
+          @recipe.tags << tag
+        end
       end
       flash[:notice] = "Recipe successfully updated!"
-      redirect_to recipes_path
+      redirect_to recipe_path(@recipe)
     else
       render :edit
     end
@@ -69,5 +78,9 @@ class RecipesController < ApplicationController
   private
     def recipe_params
       params.require(:recipe).permit(:title, :instruction_set, :ingredient_set)
+    end
+
+    def set_tags
+
     end
 end
