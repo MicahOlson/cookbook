@@ -15,7 +15,8 @@ class TagsController < ApplicationController
       flash[:notice] = "Tag successfully added!"
       redirect_to tags_path
     else
-      render :new
+      flash[:notice] = "Tag not added. This tag already exists!"
+      redirect_to new_tag_path
     end
   end
 
@@ -35,7 +36,8 @@ class TagsController < ApplicationController
       flash[:notice] = "Tag successfully updated!"
       redirect_to tags_path
     else
-      render :edit
+      flash[:notice] = "This tag is already in use!"
+      redirect_to edit_tag_path
     end
   end
 

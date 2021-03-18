@@ -13,12 +13,15 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      tag = Tag.find(params[:tag_selection].to_i)
-      tag.recipes << @recipe
+      if params[:tag_selection].to_i != 0
+        tag = Tag.find(params[:tag_selection].to_i)
+        tag.recipes << @recipe
+      end
       flash[:notice] = "Recipe successfully added!"
       redirect_to recipes_path
     else
-      render :new
+      flash[:notice] = "Recipe not added! Is this recipe already in the list?"
+      redirect_to new_recipe_path
     end
   end
 
@@ -36,8 +39,10 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
-      tag = Tag.find(params[:tag_selection].to_i)
-      tag.recipes << @recipe
+      if params[:tag_selection].to_i != 0
+        tag = Tag.find(params[:tag_selection].to_i)
+        tag.recipes << @recipe
+      end
       flash[:notice] = "Recipe successfully updated!"
       redirect_to recipes_path
     else
