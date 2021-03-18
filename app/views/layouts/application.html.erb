@@ -11,9 +11,14 @@
 
   <body>
     <div class="container">
-        <%= flash[:alert] %>
-        <%= flash[:notice] %>
-        <%= yield %>
+      <%= flash[:alert] %>
+      <%= flash[:notice] %>
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="/">Home</a></li>
+        <li role="presentation"><a href="/recipes">Recipes</a></li>
+        <li role="presentation"><a href="/tags">Tags</a></li>
+      </ul>
+      <%= yield %>
     </div>
   </body>
 </html>

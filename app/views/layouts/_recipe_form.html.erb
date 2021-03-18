@@ -1,5 +1,11 @@
 <%= render "layouts/errors", :object => @recipe %>
 
+<%if @recipe.id %>
+  <p><%= link_to "Delete recipe", recipe_path(@recipe),
+                        :data => {:confirm => "Are you sure?",
+                                       :method => "delete"} %></p>
+  <% end %>
+
 <%= form_for @recipe do |f| %>
   <%= f.label :title, 'Recipe Name:' %>
   <%= f.text_field :title, class: 'form-control', value: @recipe.title, required: 'true' %>
@@ -9,13 +15,14 @@
   <%= f.text_area :ingredient_set, class: 'form-control', value: @recipe.ingredient_set, required: 'true' %>
 
 
-  <h1>Select a Tag</h1>
+  <h1>Add a Tag</h1>
+  <p>Can't find the right tag? Add one on the <%= link_to "Tags", tags_path %> page and come back to add it to your recipe.</p>
   <% if @tags.any? %>
-    <select name="tag_selection" class="form-control">
-      <option>Select One</option>
     <% @tags.each do |tag| %>
-      <option value=<%= "#{tag.id}" %>><%= tag.tag %></option>
-    <% end %>
+      <label class="checkbox-inline">
+        <input type="checkbox" value=<%= "#{tag.id}" %>> <%= tag.tag %>
+      </label>
+    <% end %><br>
   <% else %>
     <p>There are no tags yet.</p>
   <% end %>

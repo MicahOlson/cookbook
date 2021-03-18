@@ -1,27 +1,24 @@
-<h1><%= @recipe.title %></h1>
-<h3><%= @recipe.instruction_set %></h3>
-<h3><%= @recipe.ingredient_set %></h3>
+<h1><%= @recipe.title %><small><%= link_to " edit/tag/delete", edit_recipe_path(@recipe) %></small></h1>
+<h3>Instructions</h3>
+<p><%= @recipe.instruction_set %></p>
+<h3>Ingredients</h3>
+<p><%= @recipe.ingredient_set %></p>
 
-<p><%= link_to "Edit", edit_recipe_path(@recipe) %></p>
-<p><%= link_to "Delete recipe", recipe_path(@recipe),
-                        :data => {:confirm => "Are you sure?",
-                                       :method => "delete"} %></p>
+
+
 
 
 
 <% if @recipe.tags.any? %>
-  <h4>Here are the tags for this recipe:</h4>
+  <h5>Tags</h5>
 
+  <p>| 
   <% @recipe.tags.each do |tag| %>
-    <ul>
-      <li>
-        <%= link_to tag.tag, tag_path(tag) %>
-      </li>
-    </ul>
+      <span>
+        <%= link_to tag.tag, tag_path(tag) %> |
+      </span>
   <% end %>
+  </p>
 <% else %>
   <p>No tags are listed for this recipe.</p>
 <% end %>
-
-<p><%= link_to "Add a tag", new_tag_path(@recipe) %></p><br>
-<p><%= link_to "Return to recipes", recipes_path %></p>
