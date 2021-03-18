@@ -4,6 +4,12 @@ class RecipesController < ApplicationController
     render :index
   end
 
+  def home
+    @recipes = Recipe.all
+    @tags = Tag.all
+    render :home
+  end
+
   def new
     @recipe = Recipe.new
     @tags = Tag.all
@@ -14,8 +20,11 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
       if params[:tag_selection].to_i != 0
-        tag = Tag.find(params[:tag_selection].to_i)
-        tag.recipes << @recipe
+        tag_array = params[:tag_selection]
+        tag_array.each do |check_tags|
+          tag = Tag.find(params[check_tags].to_i)
+          tag.recipes << @recipe
+        end
       end
       flash[:notice] = "Recipe successfully added!"
       redirect_to recipes_path
