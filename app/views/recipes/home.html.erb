@@ -1,5 +1,10 @@
 <h1>Welcome to the cookbook!</h1>
 
+<h4>Top 5 Most Popular Recipe Tags This Week!</h4>
 
-
-
+<% popular_tags = Tag.most_recipes %>
+  <ol>
+  <% popular_tags.each do |tag| %>
+    <li><%= link_to tag.tag, tag_path(tag.id) %></li>
+  <% end %>
+  </ol>

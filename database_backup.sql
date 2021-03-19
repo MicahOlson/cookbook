@@ -157,12 +157,13 @@ environment	development	2021-03-17 16:55:59.298412	2021-03-17 16:55:59.298412
 --
 
 COPY public.recipes (id, title, instruction_set, ingredient_set, created_at, updated_at) FROM stdin;
-1	Chili	Take listed ingredients and put them in a pot and cook them for a very long time.	meat, veg, spice, water	2021-03-17 18:21:25.461488	2021-03-17 18:32:40.080079
-14	Taco Tuesday	asdfasdf	asdfasdfads	2021-03-17 21:38:36.783892	2021-03-17 21:38:36.783892
-16	Avocado Toast	Put avocado on toast	Avocado\r\nToast	2021-03-17 23:08:21.33437	2021-03-17 23:08:21.33437
-17	Avocado Toast 2	asdfasdf	asdfasdf	2021-03-17 23:09:28.843489	2021-03-17 23:09:28.843489
-18	Avocado Toast 3	asdfasdf	asdfasdf	2021-03-17 23:12:38.181613	2021-03-17 23:12:38.181613
-19	Avocado Toast 4	asdfasdf	asdfasdf	2021-03-17 23:14:32.46157	2021-03-17 23:14:32.46157
+54	Vegetable Soup	Three egg whites with spinach, mushrooms, caramelized onions, tomatoes and low-fat feta cheese. With herbed quinoa, and your choice of rye or whole-grain toast.	Wheatgrass Juice	2021-03-18 22:44:56.485854	2021-03-18 22:44:56.485854
+55	Poutine	Three egg omelet with Roquefort cheese, chives, and ham. With a side of roasted potatoes, and your choice of toast or croissant.	White Bread	2021-03-18 22:44:56.509627	2021-03-18 22:44:56.509627
+56	Massaman Curry	Fresh Norwegian salmon, lightly brushed with our herbed Dijon mustard sauce, with choice of two sides.	Dill	2021-03-18 22:44:56.528998	2021-03-18 22:44:56.528998
+57	Sushi	Granny Smith apples mixed with brown sugar and butter filling, in a flaky all-butter crust, with ice cream.	Chia Seeds	2021-03-18 22:44:56.546988	2021-03-18 22:44:56.546988
+58	Souvlaki	Two butter croissants of your choice (plain, almond or cheese). With a side of herb butter or house-made hazelnut spread.	Camellia Tea Oil	2021-03-18 22:44:56.565181	2021-03-18 22:44:56.565181
+59	Hummus	Smoked salmon, poached eggs, diced red onions and Hollandaise sauce on an English muffin. With a side of roasted potatoes.	Eggplant	2021-03-18 22:44:56.58288	2021-03-18 22:44:56.58288
+60	Tacos	Creamy mascarpone cheese and custard layered between espresso and rum soaked house-made ladyfingers, topped with Valrhona cocoa powder.	Coconut Water	2021-03-18 22:44:56.601968	2021-03-18 22:44:56.601968
 \.
 
 
@@ -171,8 +172,44 @@ COPY public.recipes (id, title, instruction_set, ingredient_set, created_at, upd
 --
 
 COPY public.recipes_tags (recipe_id, tag_id) FROM stdin;
-1	1
-1	1
+56	144
+56	146
+56	138
+56	155
+56	159
+58	150
+58	134
+58	148
+58	149
+58	147
+58	137
+58	135
+57	144
+57	146
+57	145
+57	157
+57	143
+57	137
+57	135
+60	149
+60	139
+56	147
+56	139
+59	133
+59	145
+59	152
+59	155
+59	159
+59	154
+59	153
+54	131
+54	132
+54	133
+54	134
+55	135
+55	136
+55	137
+55	138
 \.
 
 
@@ -192,9 +229,35 @@ COPY public.schema_migrations (version) FROM stdin;
 --
 
 COPY public.tags (id, tag, created_at, updated_at) FROM stdin;
-4	Italian	2021-03-17 21:26:36.441211	2021-03-17 21:54:31.451706
-1	Hot & Spicy	2021-03-17 18:43:41.835009	2021-03-17 22:57:31.695967
-6	New Mexican	2021-03-17 23:14:42.031785	2021-03-17 23:14:42.031785
+159	Quality	2021-03-18 22:45:29.840077	2021-03-18 22:45:29.840077
+131	German	2021-03-18 22:44:56.488779	2021-03-18 22:44:56.488779
+132	African	2021-03-18 22:44:56.498319	2021-03-18 22:44:56.498319
+133	American (Traditional)	2021-03-18 22:44:56.502193	2021-03-18 22:44:56.502193
+134	Caribbean	2021-03-18 22:44:56.505697	2021-03-18 22:44:56.505697
+135	Vegetarian	2021-03-18 22:44:56.511888	2021-03-18 22:44:56.511888
+136	Argentinian	2021-03-18 22:44:56.516014	2021-03-18 22:44:56.516014
+137	Vegan	2021-03-18 22:44:56.520104	2021-03-18 22:44:56.520104
+138	Burgers	2021-03-18 22:44:56.524661	2021-03-18 22:44:56.524661
+139	Tex Mex	2021-03-18 22:44:56.531283	2021-03-18 22:44:56.531283
+140	Healthy	2021-03-18 22:44:56.535494	2021-03-18 22:44:56.535494
+141	Juice & Smoothies	2021-03-18 22:44:56.53925	2021-03-18 22:44:56.53925
+142	Korean	2021-03-18 22:44:56.543002	2021-03-18 22:44:56.543002
+143	Sushi	2021-03-18 22:44:56.54911	2021-03-18 22:44:56.54911
+144	American (New)	2021-03-18 22:44:56.553421	2021-03-18 22:44:56.553421
+145	Chinese	2021-03-18 22:44:56.55717	2021-03-18 22:44:56.55717
+146	Bar	2021-03-18 22:44:56.560811	2021-03-18 22:44:56.560811
+147	Senegalese	2021-03-18 22:44:56.567648	2021-03-18 22:44:56.567648
+148	Comfort Food	2021-03-18 22:44:56.571719	2021-03-18 22:44:56.571719
+149	Mexican	2021-03-18 22:44:56.575159	2021-03-18 22:44:56.575159
+150	Asian	2021-03-18 22:44:56.578926	2021-03-18 22:44:56.578926
+151	Pizza	2021-03-18 22:44:56.585069	2021-03-18 22:44:56.585069
+152	Ethiopean	2021-03-18 22:44:56.589364	2021-03-18 22:44:56.589364
+153	Vietnamese	2021-03-18 22:44:56.592959	2021-03-18 22:44:56.592959
+154	Thai	2021-03-18 22:44:56.596588	2021-03-18 22:44:56.596588
+155	Indian	2021-03-18 22:44:56.604342	2021-03-18 22:44:56.604342
+156	Bakery	2021-03-18 22:44:56.608705	2021-03-18 22:44:56.608705
+157	Greek	2021-03-18 22:44:56.612735	2021-03-18 22:44:56.612735
+158	Desserts	2021-03-18 22:44:56.617164	2021-03-18 22:44:56.617164
 \.
 
 
@@ -202,14 +265,14 @@ COPY public.tags (id, tag, created_at, updated_at) FROM stdin;
 -- Name: recipes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Micah
 --
 
-SELECT pg_catalog.setval('public.recipes_id_seq', 19, true);
+SELECT pg_catalog.setval('public.recipes_id_seq', 61, true);
 
 
 --
 -- Name: tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Micah
 --
 
-SELECT pg_catalog.setval('public.tags_id_seq', 6, true);
+SELECT pg_catalog.setval('public.tags_id_seq', 159, true);
 
 
 --

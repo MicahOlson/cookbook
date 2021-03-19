@@ -1,5 +1,11 @@
 <%= render "layouts/errors", :object => @tag %>
 
+<%if @tag.id %>
+  <p><%= link_to "Delete tag", tag_path(@tag),
+                        :data => {:confirm => "Are you sure?",
+                                       :method => "delete"} %></p>
+  <% end %>
+
 <%= form_for @tag do |f| %>
   <%= f.label :tag, 'Tag:' %>
   <%= f.text_field :tag, class: 'form-control', value: @tag.tag, required: 'true' %><br>

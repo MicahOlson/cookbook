@@ -1,15 +1,6 @@
-<h1><%= @tag.tag %></h1>
-
-<p><%= link_to "Edit", edit_tag_path(@tag) %></p>
-<p><%= link_to "Delete tag", tag_path(@tag),
-                        :data => {:confirm => "Are you sure?",
-                                       :method => "delete"} %></p>
-
-
+<h1><%= @tag.tag %> <small><%= link_to "edit", edit_tag_path(@tag) %></small></h1>
 
 <% if @tag.recipes.any? %>
-  <h4>Here are the recipes for this tag:</h4>
-
   <% @tag.recipes.each do |recipe| %>
     <ul>
       <li>
@@ -20,6 +11,3 @@
 <% else %>
   <p>No recipes are listed for this tag.</p>
 <% end %>
-
-<p><%= link_to "Add a recipe", new_recipe_path(@tag) %></p><br>
-

@@ -79,8 +79,4 @@ class RecipesController < ApplicationController
     def recipe_params
       params.require(:recipe).permit(:title, :instruction_set, :ingredient_set)
     end
-
-    def set_tags
-
-    end
 end
