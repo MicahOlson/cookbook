@@ -60,15 +60,15 @@ The database for this application has the following tables and relationships:
 
 ## Setup/Installation
 
-* To clone this directory, navigate in your terminal to the desired location of the project and run command `git clone https://github.com/joanna-miller/survey-soiree.git`
-* Navigate to top level of the directory with command `cd survey_soiree`
+* To clone this directory, navigate in your terminal to the desired location of the project and run command `git clone https://github.com/MicahOlson/cookbook.git`
+* Navigate to top level of the directory with command `cd cookbook`
 * To install bundler for managing gems run command `gem install bundler`
 * To install gems into the project run command `bundle install`
 * To use Visual Studio Code to edit this project, follow install instructions [here](https://code.visualstudio.com/).
 * To enable command `code`, open VS Code, click on View > Command Palette, type in "shell command", and click on "Shell Command: Install 'code' command in PATH"
 * Now, from your terminal, in the project's top level directory, you can run command `code .` to open project in VS Code.
 * Launch PostgreSQL to run a persistent database management server `postgres`
-* To recreate database, in the root directory of your terminal run command `rake build[survey_soiree]`
+* To recreate database, in the root directory of the project run command `rake db:setup`
 * To run tests using rspec, run command `rspec`
 * To run a live server, from the root level of the project directory in your terminal, run command `rails server`
 * To interact with application, navigate to http://localhost:3000/ in a web browser.
